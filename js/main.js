@@ -12,30 +12,50 @@ var items=[
 ];
 
 
+
 // user choice betwen :"Pierre, Feuille, Ciseaux"
 
-var userChoice = prompt(userName + ", veuillez saisir ci-dessous entre : \"pierre, feuille, ciseaux \" ");
-
-console.log(userChoice)
 
 
+function askUserChoice(){
+    var userEnter = prompt(userName + ", veuillez saisir ci-dessous entre : \"pierre, feuille, ciseaux \" ");
+    if (userEnter === "pierre"){
+        return(items[0]);
+    }
+    else if (userEnter === "feuille"){
+        return(items[1]);
+    }
+    else if(userEnter === "ciseaux"){
+        return(items[3]);
+    }
+}
+
+var userChoice=askUserChoice();
+console.log(userChoice);
 
 
-function itemChoice(){
-    prompt(userName + ", veuillez saisir ci-dessous entre : \"pierre, feuille, ciseaux \" ");
+//compteur random choice
+
+function randomChoice(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  console.log(randomChoice(3));
+  // expected output: 0, 1 or 2
+
+
+
+  function computerChoice(){
     
-//  }
+    if (randomChoice === 0){
+        return(items[0]);
+    }
+    else if (randomChoice === 1){
+        return(items[1]);
+    }
+    else if(randomChoice === 2){
+        return(items[2]);
+    }
+}
 
-// console.log(userChoice)
-
-// //compteur random choice
-// function getRandomInt(max) {
-//     return Math.floor(Math.random() * Math.floor(max));
-//   }
-//   console.log(getRandomInt(3));
-//   // expected output: 0, 1 or 2
-
-
-// function compterChoice(){
-
-// }
+console.log(computerChoice())
