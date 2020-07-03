@@ -5,33 +5,32 @@ alert("Bonjour et bievenue" + "\n" + "sur le site du jeu du Shifoumi" );
 var userName = prompt("Veuillez insérer votre nom");
 
 
+// user entrer a choice betwen :"Pierre, Feuille, Ciseaux"
+
 var items=[
     "Pierre",
     "Feuille",
     "Ciseaux"
 ];
 
+var userChoice= -1;
 
-
-// user choice betwen :"Pierre, Feuille, Ciseaux"
-
-
-
-function askUserChoice(){
+while(userChoice < 0){ 
     var userEnter = prompt(userName + ", veuillez saisir ci-dessous entre : \"pierre, feuille, ciseaux \" ");
+
     if (userEnter === "pierre"){
-        return(items[0]);
+        userChoice=items[0];
     }
     else if (userEnter === "feuille"){
-        return(items[1]);
+        userChoice=items[1];
     }
     else if(userEnter === "ciseaux"){
-        return(items[3]);
+        userChoice=items[2];
+    }
+    else{
+        alert("Erreur, entrée invalide");
     }
 }
-
-var userChoice=askUserChoice();
-console.log(userChoice);
 
 
 //compteur random choice
@@ -40,22 +39,46 @@ function randomChoice(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-  console.log(randomChoice(3));
-  // expected output: 0, 1 or 2
+// console.log(randomChoice(3));
+// expected output: 0, 1 or 2
 
+var result=randomChoice(3);
+computerChoice=items[result];
+   
 
+//define the winner
 
-  function computerChoice(){
-    
-    if (randomChoice === 0){
-        return(items[0]);
-    }
-    else if (randomChoice === 1){
-        return(items[1]);
-    }
-    else if(randomChoice === 2){
-        return(items[2]);
-    }
+function win(){
+    alert("Vous avez choisis : " + userChoice + ".  L'ordinateur a choisis : " + computerChoice + ".  Félicitation :) , vous avez gagné !");
 }
 
-console.log(computerChoice())
+function lose(){alert("Vous avez choisis : " + userChoice + ".  L'ordinateur a choisis : " + computerChoice + ".  Dommage :/ , vous avez perdu.");
+}
+
+function egality(){alert("Vous avez choisis : " + userChoice  +".  L'ordinateur a choisis : " + computerChoice + ".  Egalité , personne n'a gagné.");
+}
+
+
+
+if (userChoice === computerChoice){
+    egality();
+}
+else if(userChoice === "Pierre" && computerChoice === "Ciseaux"){
+    win();
+}
+else if(userChoice === "Pierre" && computerChoice === "Feuille"){
+    lose();
+}
+else if(userChoice === "Ciseaux" && computerChoice === "Feuille"){
+    win();
+}
+else if(userChoice === "Ciseaux" && computerChoice === "Pierre"){
+    lose();
+}
+else if(userChoice === "Feuille" && computerChoice === "Ciseaux"){
+    lose();
+}
+else if(userChoice === "Feuille" && computerChoice === "Pierre"){
+    win();
+}
+
