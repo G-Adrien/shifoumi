@@ -36,4 +36,4 @@ Attention par contre sa saisie est insensible à la casse, c’est à dire que P
 
     Vous trouverez dans la branche Master le projet de base fonctionnel.
     
-    Vous trouverez égelement une branche "V2", j'ai essayé la partie "pour aller plus loin.
+    Vous trouverez également une branche "V2", j'ai essayé la partie "pour aller plus loin.

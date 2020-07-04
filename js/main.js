@@ -7,6 +7,7 @@ var userName = prompt("Veuillez insérer votre nom");
 
 // user entrer a choice betwen :"Pierre, Feuille, Ciseaux"
 
+//array for store different choices
 var items=[
     "Pierre",
     "Feuille",
@@ -34,7 +35,6 @@ while(userChoice < 0){
 
 
 //compteur random choice
-
 function randomChoice(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
@@ -47,7 +47,6 @@ computerChoice=items[result];
    
 
 //define the winner
-
 function win(){
     alert("Vous avez choisis : " + userChoice + ".  L'ordinateur a choisis : " + computerChoice + ".  Félicitation :) , vous avez gagné !");
 }
@@ -59,26 +58,19 @@ function egality(){alert("Vous avez choisis : " + userChoice  +".  L'ordinateur 
 }
 
 
-
+// set the rules of the game
 if (userChoice === computerChoice){
     egality();
 }
 else if(userChoice === "Pierre" && computerChoice === "Ciseaux"){
     win();
 }
-else if(userChoice === "Pierre" && computerChoice === "Feuille"){
-    lose();
-}
 else if(userChoice === "Ciseaux" && computerChoice === "Feuille"){
     win();
-}
-else if(userChoice === "Ciseaux" && computerChoice === "Pierre"){
-    lose();
-}
-else if(userChoice === "Feuille" && computerChoice === "Ciseaux"){
-    lose();
 }
 else if(userChoice === "Feuille" && computerChoice === "Pierre"){
     win();
 }
-
+else{
+    lose();
+}
