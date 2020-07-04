@@ -2,12 +2,11 @@
 alert("Bonjour et bievenue" + "\n" + "sur le site du jeu du Shifoumi" );
 
 //ask a player name
-var userName = prompt("Veuillez insérer votre nom");
-
+//var userName = prompt("Veuillez insérer votre nom");
+var userName = "Adrien";
 
 // user entrer a choice betwen :"Pierre, Feuille, Ciseaux"
 
-//array for store different choices
 var items=[
     "Pierre",
     "Feuille",
@@ -33,8 +32,10 @@ while(userChoice < 0){
     }
 }
 
+console.log(userChoice);
 
 //compteur random choice
+
 function randomChoice(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
@@ -45,32 +46,47 @@ function randomChoice(max) {
 var result=randomChoice(3);
 computerChoice=items[result];
    
+console.log(computerChoice);
 
 //define the winner
+
 function win(){
     alert("Vous avez choisis : " + userChoice + ".  L'ordinateur a choisis : " + computerChoice + ".  Félicitation :) , vous avez gagné !");
 }
 
-function lose(){alert("Vous avez choisis : " + userChoice + ".  L'ordinateur a choisis : " + computerChoice + ".  Dommage :/ , vous avez perdu.");
+function lose(){
+    alert("Vous avez choisis : " + userChoice + ".  L'ordinateur a choisis : " + computerChoice + ".  Dommage :/ , vous avez perdu.");
 }
 
-function egality(){alert("Vous avez choisis : " + userChoice  +".  L'ordinateur a choisis : " + computerChoice + ".  Egalité , personne n'a gagné.");
+function egality(){
+    alert("Vous avez choisis : " + userChoice  +".  L'ordinateur a choisis : " + computerChoice + ".  Egalité , personne n'a gagné.");
 }
 
+var userCount= 0;
+var computerCount= 0;
 
-// set the rules of the game
-if (userChoice === computerChoice){
-    egality();
+while ((userCount <= 3) && (computerCount <= 3)) {
+    if (userChoice === computerChoice){
+    }
+    else if(userChoice === "Pierre" && computerChoice === "Ciseaux"){
+       userCount++;
+    }
+    else if(userChoice === "Ciseaux" && computerChoice === "Feuille"){
+        userCount++;
+    }
+    else if(userChoice === "Feuille" && computerChoice === "Pierre"){
+        userCount++;
+    }
+    else{
+        computerCount++;
+    }
+    console.log(userCount)
+    console.log(computerCount)
 }
-else if(userChoice === "Pierre" && computerChoice === "Ciseaux"){
-    win();
-}
-else if(userChoice === "Ciseaux" && computerChoice === "Feuille"){
-    win();
-}
-else if(userChoice === "Feuille" && computerChoice === "Pierre"){
-    win();
+
+if(userCount < computerCount){
+    lose()
 }
 else{
-    lose();
+    win()
 }
